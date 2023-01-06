@@ -3,7 +3,7 @@
     <button mat-icon-button>
       <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
     </button>
-    <a mat-button [routerLink]="['/']" style="font-size: 1.1rem;">INICIO<!-- BLOOMING TEC --></a>
+    <a mat-button [routerLink]="['/']" style="font-size: 1.1rem;"><img src="../assets/bg.png" alt="home" style="height: 60px;"></a>
     <span class="menu-spacer"></span>
     <div id="nav_a">
       <a mat-button [routerLink]="['/']"><mat-icon> home</mat-icon> Inicio</a>
@@ -60,6 +60,66 @@
         <a mat-list-item [routerLink]="['/applications']"><span class="material-icons">format_list_numbered</span> Recetas </a>
         <a mat-list-item [routerLink]="['/run-applications']"><span class="material-icons">checklist_rtl</span> Ejecutar </a>
         <a mat-list-item [routerLink]="['/applications-report']"><span class="material-icons">summarize</span> Reporte </a>
+      </mat-expansion-panel>
+      <mat-expansion-panel *ngIf="this.authService.userName">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Ejecutivo
+          </mat-panel-title>
+          <!-- <mat-panel-description>
+            Currently I am
+          </mat-panel-description> -->
+        </mat-expansion-panel-header>
+        <a mat-list-item [routerLink]="['/applications']"><span class="material-icons">sync_alt</span> Entradas y salidas </a>
+        <a mat-list-item [routerLink]="['/run-applications']"><span class="material-icons">summarize</span> Reporte de almacén </a>
+        <a mat-list-item [routerLink]="['/applications-report']"><span class="material-icons">bar_chart</span> Gráficas </a>
+      </mat-expansion-panel>
+      <mat-expansion-panel *ngIf="this.authService.userName">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Monitoreo
+          </mat-panel-title>
+          <!-- <mat-panel-description>
+            Currently I am
+          </mat-panel-description> -->
+        </mat-expansion-panel-header>
+        <a mat-list-item [routerLink]="['/applications']"><span class="material-icons">trending_up</span> Monitoreos </a>
+        <!-- <a mat-list-item [routerLink]="['/run-applications']"><span class="material-icons">checklist_rtl</span> Ejecutar </a> -->
+        <a mat-list-item [routerLink]="['/applications-report']"><span class="material-icons">summarize</span> Reporte </a>
+      </mat-expansion-panel>
+      <mat-expansion-panel *ngIf="this.authService.userName">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Capital Humano
+          </mat-panel-title>
+          <!-- <mat-panel-description>
+            Currently I am
+          </mat-panel-description> -->
+        </mat-expansion-panel-header>
+        <a mat-list-item [routerLink]="['/applications']"><span class="material-icons">sentiment_satisfied</span> Empleados </a>
+        <a mat-list-item [routerLink]="['/run-applications']"><span class="material-icons">paid</span> Cálculo Nómina </a>
+        <a mat-list-item [routerLink]="['/run-applications']"><span class="material-icons">ssid_chart</span> Gestión de incidencias </a>
+        <a mat-list-item [routerLink]="['/run-applications']"><span class="material-icons">price_change</span> Configuración de pagos </a>
+        <a mat-list-item [routerLink]="['/run-applications']"><span class="material-icons">agriculture</span> Corte </a>
+        <a mat-list-item [routerLink]="['/run-applications']"><span class="material-icons">vertical_split</span> Bitácora de cosecha </a>
+        <a mat-list-item [routerLink]="['/applications-report']"><span class="material-icons">summarize</span> Reporte </a>
+      </mat-expansion-panel>
+      <mat-expansion-panel *ngIf="this.authService.userName">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Inocuidad
+          </mat-panel-title>
+          <!-- <mat-panel-description>
+            Currently I am
+          </mat-panel-description> -->
+        </mat-expansion-panel-header>
+        <!-- <a mat-list-item [routerLink]="['/applications']"><span class="material-icons">format_list_numbered</span> Empleados </a>
+        <a mat-list-item [routerLink]="['/run-applications']"><span class="material-icons">checklist_rtl</span> Cálculo Nómina </a>
+        <a mat-list-item [routerLink]="['/run-applications']"><span class="material-icons">checklist_rtl</span> Gestión de incidencias </a>
+        <a mat-list-item [routerLink]="['/run-applications']"><span class="material-icons">checklist_rtl</span> Configuración de pagos </a>
+        <a mat-list-item [routerLink]="['/run-applications']"><span class="material-icons">checklist_rtl</span> Corte </a>
+        <a mat-list-item [routerLink]="['/run-applications']"><span class="material-icons">checklist_rtl</span> Bitácora de cosecha </a>
+        <a mat-list-item [routerLink]="['/applications-report']"><span class="material-icons">summarize</span> Reporte </a> -->
       </mat-expansion-panel>
       <mat-expansion-panel *ngIf="this.authService.userName">
         <mat-expansion-panel-header>

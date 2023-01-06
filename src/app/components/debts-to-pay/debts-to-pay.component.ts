@@ -69,7 +69,7 @@ export class DebtsToPayComponent implements OnInit {
 
   submitSurveyData() {
     //let url='http://localhost/blooming-tec/';
-    let url='http://localhost:8080/local/dev/adm/php-back/';
+    let url='https://demo.bloomingtec.mx/';
     let n_orders: any[] = this.orders.filter((e) => {
       return e.paymentdate >= this.myForm.get('initial_date').value && e.paymentdate <= this.myForm.get('final_date').value
     });
