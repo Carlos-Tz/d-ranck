@@ -77,11 +77,13 @@
                                     <thead >
                                         <th>Producto</th>
                                         <th>Cantidad</th>
+                                        <th>Unidad</th>
                                         <th>Opciones</th>
                                     </thead>
                                     <tr *ngFor="let pro of products_l">
                                         <td>{{ pro.name }}</td>
                                         <td>{{ pro.quantity }}</td>
+                                        <td>{{ pro.unit }}</td>
                                         <td>
                                             <button class="btn btn-outline-info me-2" style="padding: 0 0.2rem;" (click)="editPro(pro.key, pro.quantity)"><span class="material-icons">edit</span></button>
                                             <button class="btn btn-outline-danger" style="padding: 0 0.2rem;" (click)="deletePro(pro.key)"><span class="material-icons">delete</span></button></td>
@@ -95,13 +97,17 @@
                             <div class="col-sm-12 col-md-4">
                                 <select2 class="w-100" [data]="products" displaySearchStatus="always"
                                     listPosition="above" styleMode="material" resettable formControlName="product"
-                                    resultMaxHeight="200px">
+                                    resultMaxHeight="200px" (update)="updateP($event)">
                                     <select2-hint>Productos</select2-hint>
                                 </select2>
                             </div>
                             <mat-form-field appearance="fill" class="col-sm-12 col-md-2">
                                 <mat-label>Cantidad</mat-label>
                                 <input matInput type="number" formControlName="quantity" required>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" class="col-sm-12 col-md-2">
+                                <mat-label>Unidad</mat-label>
+                                <input matInput type="text" [value]="unit_" readonly>
                             </mat-form-field>
                             <div class="col-sm-12 col-md-2">
                                 <button mat-button class="btn btn-outline-success" (click)="addProduct()"

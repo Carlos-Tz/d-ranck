@@ -57,7 +57,7 @@ export class RequisitionsComponent implements OnInit {
       data.forEach(item => {
         const r = item.payload.val();     
         if(r.status != 5 && r.status != 3){
-          const req = {'id': item.key, 'cicle': r.cicle, 'date': r.date, 'priority': r.priority, 'status': r.status, 'justification': r.justification, 'petitioner': '', 'products': [], 'quotations': r.quotations, 'orders': r.orders };        
+          const req = {'id': item.key, 'cicle': r.cicle, 'date': r.date, 'priority': r.priority, 'status': r.status, 'justification': r.justification, 'petitioner': '', 'comments': r.comments, 'products': [], 'quotations': r.quotations, 'orders': r.orders };        
           this.requisitions.push(req as Requisition);
         }   
       });

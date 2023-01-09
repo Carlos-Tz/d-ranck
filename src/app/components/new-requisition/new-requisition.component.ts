@@ -22,6 +22,7 @@ export class NewRequisitionComponent implements OnInit {
   public myForm!: FormGroup;
   public myForm1!: FormGroup;
   public date = '';
+  public unit_ = '';
   public dataSource = new MatTableDataSource<any>();
   @ViewChild(MatPaginator, {static: false}) paginator!: MatPaginator;
 
@@ -64,7 +65,7 @@ export class NewRequisitionComponent implements OnInit {
     this.apiP.GetProductList().snapshotChanges().subscribe(data => {
       data.forEach(item => {
         const p = item.payload.val();
-        const pro = {'value': item.key!, 'label': p.name};
+        const pro = {'value': item.key!, 'label': p.name, 'data': p.unit};
         this.products.push(pro);
         const p1 = { 'key': item.key, 'name': p.name, 'unit': p.unit, 'avcost': p.avcost, 'category': p.category }
         //p['key'] = item.key;        
@@ -134,6 +135,7 @@ export class NewRequisitionComponent implements OnInit {
   
     }
     this.myForm1.reset();
+    this.unit_ = '';
   }
 
   editPro(key: string, quantity: number){
@@ -150,4 +152,15 @@ export class NewRequisitionComponent implements OnInit {
     }
   }
 
+  updateP(ev){
+    //this.sectors1 = ev.value.flatMap((e, i) => ['sector__'+e, e]);
+    //console.log(ev);
+    //console.log(ev.options);
+    if(ev.value){
+      //console.log(ev.value);
+      //console.log(ev.options[0].data);
+      this.unit_ = '';
+      this.unit_ = ev.options[0].data;
+    }
+  }
 }
