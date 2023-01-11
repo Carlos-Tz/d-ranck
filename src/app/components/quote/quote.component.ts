@@ -36,11 +36,6 @@ export class QuoteComponent implements  OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.mail.mail_({ email: 'nine2one@live.com.mx' }).subscribe(data => {
-      if(data){
-        console.log(data);
-      }
-    });
     this.sForm();
     this.apiR.GetRequisition(this.data.id).valueChanges().subscribe(data => {
       this.myForm.patchValue(data);
@@ -91,12 +86,16 @@ export class QuoteComponent implements  OnInit, OnDestroy {
         qq['id'] = v++;
         this.apiQ.add(qq);
         q_l.push(qq);
+        this.mail.mail_(e).subscribe(data => {
+          if(data){ console.log(data); }
+        });
       }
-      console.log(q_l);
+      //console.log(q_l);
       this.myForm.patchValue({ status: 4 });
       this.myForm.patchValue({ quotations: q_l });
       this.apiR.UpdateRequisition(this.myForm.value, this.data.id);
       this.toastr.success('Requisición cotizada!');
+      this.toastr.success('Cotización enviada por correo!');
     })/* .then( () => {
       this.quotations_ = [];
       this.sq.unsubscribe();

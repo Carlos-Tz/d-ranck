@@ -19,6 +19,7 @@ import { ViewPdfQuotationsComponent } from '../view-pdf-quotations/view-pdf-quot
 import { ViewPdfOrdersComponent } from '../view-pdf-orders/view-pdf-orders.component';
 import { RejectedRequisitionsComponent } from '../rejected-requisitions/rejected-requisitions.component';
 import { OrderedRequisitionsComponent } from '../ordered-requisitions/ordered-requisitions.component';
+import { MailService } from 'src/app/services/mail.service';
 
 @Component({
   selector: 'app-requisitions',
@@ -49,9 +50,13 @@ export class RequisitionsComponent implements OnInit {
     public apiC: ApiCompanyService,
     public apiR: ApiRequisitionService,
     public toastr: ToastrService,
+    public mail: MailService
   ) { }
 
   ngOnInit(): void {
+    this.mail.mail_({ email: 'demo@mail.com', id: 2}).subscribe(data => {
+      if(data){ console.log(data); }
+    });
     this.apiR.GetRequisitionList().snapshotChanges().subscribe(data => {
       this.requisitions = [];
       data.forEach(item => {

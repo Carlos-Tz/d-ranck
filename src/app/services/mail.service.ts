@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class MailService {
-  url='http://localhost/';
-  //url='https://didocu.com/pepegaucho/';
+  //url='http://localhost:8080/local/dev/adm/';
+  url='https://demo.bloomingtec.mx/';
 
   constructor(private http: HttpClient) { }
   mail_(mail: Object){
